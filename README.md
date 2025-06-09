@@ -1,45 +1,94 @@
-# Twitter Sentiment Analysis in Healthcare: A Comparative Study of Naïve Bayes and Decision Tree Models
+Twitter Healthcare Sentiment Analysis
+Project Overview
+This study investigates the application of sentiment analysis on healthcare-related Twitter data to understand public opinion and sentiment. Leveraging Apache Spark for big data processing, we compare the performance of Naïve Bayes and Decision Tree classification models in categorizing sentiments as positive or negative. The project aims to extract valuable insights from large volumes of unstructured text data, contributing to advancements in healthcare informatics and informing news media's approach to healthcare issues.
 
-## Project Overview
+Problem Statement
+With the ever-increasing volume of text data generated online, particularly on social media platforms like Twitter, there's a significant opportunity to gauge public sentiment towards critical domains like healthcare. This project addresses the challenge of accurately classifying these sentiments, providing insights that can influence public health policy and practice.
 
-This project, titled "Comparison of Naïve Bayes and Decision Tree Approaches to Twitter Sentiment Analysis in Healthcare," embarks on a critical evaluation of machine learning algorithms to analyze sentiments within healthcare-related tweets. The primary goal is to assess the accuracy and efficiency of Naïve Bayes and Decision Tree models in deciphering public opinions towards healthcare topics disseminated through Twitter. Leveraging Apache Spark libraries for efficient data processing, this study navigates through extensive text data sourced from a variety of news publications, aiming to harness the power of big data in sentiment analysis.
+Methodology
+Our approach involved several key stages:
 
-## Objective
+Data Collection: Healthcare-related tweets were gathered from various major health news organizations.
 
-The objective of this project is twofold:
-1. To compare the performance of Naïve Bayes and Decision Tree algorithms in the context of sentiment analysis of healthcare-related tweets.
-2. To explore the application of Apache Spark in processing large datasets, thereby facilitating a deeper understanding of public sentiment towards healthcare topics on social media platforms.
+Data Preprocessing and Cleaning: Apache Spark on Databricks was utilized to preprocess and clean the raw Twitter data. This included removing URLs, special characters, stop words, and applying natural language processing techniques such as tokenization, stemming, and lemmatization. The data was then labeled with initial sentiment scores (Positive/Negative).
 
-## Methodology
+Feature Extraction: Text data was transformed into a numerical format suitable for machine learning models using a Bag-of-Words (BoW) representation. Publication names and sentiment labels were converted using a string indexer. One-hot encoding was applied to categorical features.
 
-The project adopts a systematic approach to sentiment analysis, involving the following key steps:
-- **Data Collection:** Harvesting a comprehensive dataset of tweets related to healthcare topics from Twitter.
-- **Data Processing:** Utilizing Apache Spark libraries to preprocess and clean the collected text data, preparing it for analysis.
-- **Model Implementation:** Developing and training Naïve Bayes and Decision Tree models on the processed dataset.
-- **Performance Evaluation:** Assessing the models' performance using the F1 score as the primary evaluation metric, focusing on their precision and recall capabilities.
+Model Implementation: Naïve Bayes and Decision Tree models were developed and trained. The data was split into 70% for training and 30% for testing. Cross-validation measures were used to optimize model parameters and prevent overfitting.
 
-## Results and Insights
+Performance Evaluation: Models were assessed using standard metrics: F1 score, precision, and recall. Confusion matrices were generated to illustrate each model's successes and weaknesses.
 
-The comparative analysis of Naïve Bayes and Decision Tree models revealed insightful findings regarding their performance in sentiment analysis of healthcare-related tweets. Key results include:
-- Detailed metrics on the accuracy, precision, and recall of each model.
-- Evaluation of the computational efficiency and scalability of the models when processing large datasets with Apache Spark.
+Computational Efficiency Assessment: The training times and resource utilization of both models were evaluated, particularly in the context of Apache Spark's big data capabilities.
 
-The insights derived from this project highlight the strengths and limitations of each algorithm in the context of sentiment analysis, contributing valuable knowledge to the field of healthcare informatics and big data analysis.
+Results and Discussion
+Performance Comparison
+Model
 
-## Conclusion
+Training Time (approx.)
 
-This project underscores the significance of leveraging machine learning algorithms to understand public sentiment towards healthcare topics on social media. By comparing Naïve Bayes and Decision Tree models, it provides a comprehensive evaluation of their applicability and efficiency in sentiment analysis, alongside showcasing the potential of Apache Spark in managing big data challenges. 
+F1 Score
 
-The findings of this study not only contribute to the advancement of sentiment analysis techniques in the realm of healthcare but also open avenues for further research on the integration of big data technologies in extracting actionable insights from social media data.
+Bias Towards Positive
 
-## Additional Resources
+Naïve Bayes
 
-For a more detailed exploration of the methodology, results, and analytical insights, please refer to the comprehensive report available in the `Team8_.pdf` document.
+80 seconds
 
-## Acknowledgements
+0.854
 
-We extend our gratitude to all individuals and organizations that contributed data, insights, and expertise towards the completion of this project. Your support was invaluable in navigating the complexities of sentiment analysis and big data processing.
+Minimal
 
----
+Decision Tree
 
-**For feedback and inquiries, please contact us through the project repository. Your input is highly appreciated as we continue to explore and innovate in the field of healthcare sentiment analysis.**
+13 minutes
+
+0.743
+
+Significant
+
+Naïve Bayes consistently outperformed the Decision Tree model in terms of F1 score and computational efficiency. It demonstrated minimal bias, indicating better generalization to new data.
+
+Decision Tree, despite parameter optimization, showed a strong bias towards predicting positive labels, leading to a lower F1 score and significantly higher training time, especially with larger datasets and deeper trees.
+
+Computational Efficiency with Apache Spark
+The Bag-of-Words (BoW) representation of Twitter data, combined with robust preprocessing, proved highly effective for a big data approach to sentiment analysis using Apache Spark.
+
+Naïve Bayes, due to its strong assumptions of feature independence, was remarkably efficient in training, processing over 42,000 rows (70% of the dataset) in just over a minute.
+
+While visualization involved converting Spark DataFrames to Pandas, which could pose scalability issues for even larger datasets, for this study's scope, it was manageable.
+
+Conclusion
+This study effectively demonstrates the capabilities of Naïve Bayes and Decision Tree models in sentiment analysis of healthcare tweets. It highlights that the Multinomial Naïve Bayes model is particularly well-suited for text classification tasks due to its efficiency, accuracy, and ability to handle word frequencies. The research also underscores the immense potential of Apache Spark for processing vast amounts of data in healthcare informatics, enabling rapid extraction of valuable insights from unstructured text.
+
+For future work, exploring advanced decision tree evolutions like BFTree could potentially improve performance and address the efficiency challenges encountered with traditional Decision Tree models in big data environments.
+
+Getting Started
+To replicate this study or use the code:
+
+Clone the repository:
+
+git clone https://github.com/your-username/twitter-healthcare-sentiment-analysis.git
+cd twitter-healthcare-sentiment-analysis
+
+Set up your Apache Spark/Databricks environment:
+(Further instructions on setting up Spark and Databricks, including dependencies and environment configuration, would go here. You would likely need to detail specific library installations, e.g., pyspark, nltk, etc.)
+
+Data Acquisition:
+(Provide instructions on how to obtain or prepare the Twitter dataset used in the study. If it's a public dataset, link to it. If it's proprietary, explain how a user could use their own similar data.)
+
+Run the analysis:
+(Provide clear steps on how to execute the Jupyter notebooks or scripts for data preprocessing, model training, and evaluation.)
+
+Contributing
+Contributions are welcome! Please feel free to open an issue or submit a pull request if you have suggestions for improvements, bug fixes, or new features.
+
+Contact
+For feedback and inquiries, please contact us through the project repository or reach out to the authors listed in the original paper:
+
+Kieran Fox (psykf2@nottingham.ac.uk)
+
+Aditya Kumar Sasmal (psxas24@nottingham.ac.uk)
+
+Ashwini Bharat Doke (psxad11@nottingham.ac.uk)
+
+Shruthi Chinni (psxsc19@nottingham.ac.uk)
